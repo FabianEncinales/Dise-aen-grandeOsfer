@@ -1,0 +1,661 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+:root {
+	--color-primary: #010619;
+	--color-secondary: #efd143;
+	--color-text: #eff2f9;
+}
+
+html,
+body {
+	overflow-x: hidden;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	background-color: #010619;
+}
+
+/* Barra de navegación */
+nav {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 15px 40px;
+}
+
+/* Logo */
+nav .logo img {
+	height: 40px; /* Ajusta según tu diseño */
+	width: auto;
+}
+
+/* Lista de navegación */
+nav ul {
+	font-family: poppins, sans-serif;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	gap: 50px;
+}
+
+/* Enlaces */
+nav ul li a {
+	text-decoration: none;
+	color: var(--color-text);
+	font-size: 16px;
+	position: relative;
+	padding-bottom: 8px;
+	transition: color 0.3s ease;
+}
+
+/* Líneas debajo */
+nav ul li a::after,
+nav ul li a::before {
+	content: '';
+	position: absolute;
+	left: 8px;
+	width: 100%;
+	height: 2px;
+	transform: scaleX(0);
+	transition: transform 0.3s ease;
+}
+
+nav ul li a::after {
+	bottom: 0;
+	background: var(--color-text); /* Línea amarilla */
+	width: 70%;
+}
+
+nav ul li a::before {
+	bottom: -5px;
+	background: var(--color-text); /* Línea blanca */
+	width: 50%;
+}
+
+/* Activar efecto */
+nav ul li a:hover::after,
+nav ul li a:hover::before,
+nav ul li a.activo::after,
+nav ul li a.activo::before {
+	transform: scaleX(1);
+}
+
+/********* HERO ***********/
+
+/* Contenedor principal */
+.hero {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 40px 60px;
+	gap: 20px;
+}
+
+/* Sección izquierda */
+.left {
+	max-width: 50%;
+	color: var(--color-text);
+	font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+		Roboto, Helvetica, Arial, sans-serif;
+
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+/*.titles {
+	letter-spacing: 10px;  separa letras 
+}*/
+
+.line1 {
+	font-weight: 800;
+	font-style: italic;
+	font-size: clamp(120px, 6vw, 70px);
+	margin: 0;
+	margin-left: 80px;
+}
+
+.row2 {
+	display: flex;
+	align-items: flex-end;
+	gap: 10px;
+	margin-top: -40px;
+	margin-left: 160px;
+}
+
+.en {
+	font-weight: 600;
+	font-size: clamp(80px, 2vw, 28px);
+	position: relative;
+	top: -15px; /* súbelo, ajusta el valor */
+}
+
+.grande {
+	font-weight: 800;
+	font-style: italic;
+	font-size: clamp(120px, 7vw, 90px);
+	margin: 0;
+}
+
+/* Iconos sociales */
+.social {
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+	margin-top: auto;
+}
+
+.social a {
+	position: relative;
+	top: -180px;
+	right: 23px;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background: #6e7f8d; /* fondo gris oscuro */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--color-text);
+	font-size: 18px;
+	text-decoration: none;
+	transition: all 0.3s ease;
+}
+
+/* Hover con color de cada red */
+.social a:hover {
+	transform: scale(1.1);
+}
+
+/* Colores personalizados */
+.social a:nth-child(1):hover {
+	background: var(--color-secondary);
+} /* Facebook */
+.social a:nth-child(2):hover {
+	background: var(--color-secondary);
+} /* Instagram */
+.social a:nth-child(3):hover {
+	background: var(--color-secondary);
+} /* YouTube */
+
+/* Sección derecha img */
+.right img {
+	position: relative;
+	top: -20px;
+	max-width: 420px;
+	height: auto;
+	display: block;
+	transform: rotate(-2.96deg); /* rotación en grados */
+}
+
+/* Cinta */
+/* Contenedor */
+.cintas {
+	position: absolute;
+	width: 100%;
+	height: 200px;
+	z-index: 100;
+}
+
+/* Estilo general de cintas */
+.cinta {
+	position: absolute;
+	width: 250%;
+	height: 50px;
+	display: flex;
+	align-items: center;
+	background: rgba(255, 255, 255, 0.1);
+	border: 1px solid rgba(255, 255, 255, 0.15);
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(8px);
+	overflow: hidden;
+}
+
+/* Contenedor de cintas */
+.cintas-container {
+	font-family: poppins, sans-serif;
+	position: relative; /* Contenedor relativo para las cintas */
+	width: 100%;
+	color: var(--color-text);
+	height: 200px; /* Ajusta según el diseño */
+	z-index: 100;
+}
+
+/* Primera cinta (Superior en el cruce) */
+.cinta1 {
+	position: absolute;
+	top: -145px; /* Ajusta la posición fija */
+	transform: rotate(-5deg);
+	left: -25%;
+	z-index: 20;
+}
+
+/* Segunda cinta (Inferior en el cruce) */
+.cinta2 {
+	position: absolute;
+	top: 80px; /* Ajusta la posición fija */
+	transform: rotate(10deg);
+	left: -20%;
+	z-index: 10;
+}
+
+/* Contenedor del icono del mouse */
+/* Contenedor del icono del mouse */
+.mouse-icon {
+	position: absolute; /* Posición fija */
+	top: 50px; /* Ajusta la posición vertical */
+	left: 50%;
+	transform: translateX(-50%);
+	width: 30px;
+	height: 45px;
+	border: 2px solid var(--color-text);
+	border-radius: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 200; /* Asegúrate de que esté por encima de las cintas */
+}
+
+.mouse-icon .wheel {
+	width: 6px;
+	height: 10px;
+	background-color: var(--color-text);
+	border-radius: 50%;
+	animation: wheel 1.5s infinite;
+}
+
+/* Ondas debajo del mouse */
+.mouse-icon::before,
+.mouse-icon::after {
+	content: '';
+	position: absolute;
+	width: 10px;
+	height: 2px;
+	background-color: var(--color-text);
+	border-radius: 50px;
+	animation: wave 1.5s infinite;
+}
+
+.mouse-icon::before {
+	bottom: -10px; /* Posición de la primera onda */
+	left: 30%;
+	transform: translateX(-30%);
+	opacity: 0.6;
+}
+
+.mouse-icon::after {
+	bottom: -20px; /* Posición de la segunda onda */
+	left: 30%;
+	transform: translateX(-30%);
+	opacity: 0.3;
+}
+
+/* Animación de las ondas */
+@keyframes wave {
+	0% {
+		transform: scaleX(1);
+		opacity: 1;
+	}
+	50% {
+		transform: scaleX(1);
+		opacity: 0.5;
+	}
+	100% {
+		transform: scaleX(1);
+		opacity: 1;
+	}
+}
+
+/* Nueva sección: Comunidad */
+.community {
+	padding: 190px 50px;
+	text-align: left; /* Alinea el texto hacia la izquierda */
+	background-color: var(--color-primary);
+	color: var(--color-text);
+}
+
+.community h2 {
+	font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+		Roboto, Helvetica, Arial, sans-serif;
+	font-size: 38px;
+	font-weight: 800;
+	margin-bottom: 10px;
+}
+
+.community .subtitle {
+	font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+		Roboto, Helvetica, Arial, sans-serif;
+	font-size: 28px;
+	font-weight: 600;
+	color: var(--color-secondary);
+	margin-bottom: 20px;
+}
+
+.community p {
+	font-family: 'Poppins', sans-serif;
+	font-size: 20px;
+	line-height: 1.4;
+	max-width: 1200px;
+	margin: 0; /* Elimina el centrado */
+}
+
+/* Nueva sección: Equipo */
+.team {
+	position: relative;
+	top: -100px;
+	padding: 50px 20px;
+	text-align: center;
+	background-color: var(--color-primary);
+	color: var(--color-text);
+}
+
+.team h2 {
+	font-size: 28px;
+	font-weight: 800;
+	margin-bottom: 40px;
+	color: var(--color-secondary);
+}
+
+.team-container {
+	position: relative;
+	top: 60px;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr); /* Tres columnas */
+	gap: 30px; /* Espaciado entre los elementos */
+	justify-items: center; /* Centra los elementos */
+}
+
+.team-member {
+	text-align: center;
+}
+
+.team-member img {
+	width: 100%;
+	max-width: 250px;
+	height: auto;
+	border-radius: 10px;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.team-member h3 {
+	font-size: 18px;
+	font-weight: 700;
+	margin-top: 10px;
+}
+
+.team-member p {
+	font-size: 14px;
+	color: var(--color-secondary);
+}
+
+/* Nueva sección: Suscripción */
+.subscribe {
+	padding: 50px 20px;
+	background-color: var(--color-primary);
+	color: var(--color-text);
+}
+
+.subscribe-content {
+	display: flex;
+	justify-content: flex-start; /* Alinea el contenido a la izquierda */
+	align-items: flex-start; /* Alinea verticalmente al inicio */
+	gap: 50px;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+.subscribe-text {
+	position: relative;
+	top: 80px;
+	flex: 1;
+	text-align: left; /* Alinea el texto a la izquierda */
+}
+
+.subscribe-text h2 {
+	font-size: 40px;
+	font-weight: 800;
+	margin-bottom: 20px; /* Espaciado entre el título y el texto */
+	color: var(--color-text);
+}
+.subscribe-text h2 span {
+	color: var(--color-secondary);
+}
+.subscribe-text p {
+	font-size: 18px;
+	font-weight: 400;
+	line-height: 1.6;
+	margin-top: 40px;
+	text-align: justify; /* Justifica el texto */
+}
+
+.subscribe form {
+	font-family: poppins, sans-serif;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	align-items: center; /* Centra los elementos horizontalmente */
+}
+
+/* Título encima del formulario */
+.form-title {
+	font-size: 20px;
+	font-weight: 600;
+	color: var(--color-secondary);
+	text-align: center;
+	margin-bottom: 20px; /* Espaciado entre el título y los campos */
+}
+
+.subscribe input,
+.subscribe textarea {
+	font-family: poppins, sans-serif;
+	width: 100%;
+	max-width: 400px;
+	padding: 10px;
+	font-size: 16px;
+	border: 1px solid var(--color-secondary);
+	border-radius: 5px;
+	background-color: #fff;
+	color: #000;
+}
+
+.subscribe textarea {
+	resize: none; /* Evita que el usuario cambie el tamaño del área de texto */
+}
+
+.subscribe button {
+	width: 100%; /* Hace que el botón tenga el mismo ancho que los campos */
+	max-width: 400px; /* Igual que los campos de entrada */
+	padding: 10px 20px;
+	font-size: 16px;
+	font-weight: 700;
+	color: #fff;
+	background-color: var(--color-secondary);
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.subscribe button:hover {
+	background-color: #d4b02c;
+}
+.form-message {
+	margin-top: 20px;
+	font-size: 16px;
+	color: var(--color-secondary);
+}
+
+/********* HERO ***********/
+.hero {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 40px 60px;
+	gap: 20px;
+}
+
+.left {
+	max-width: 50%;
+}
+
+.line1 {
+	font-size: clamp(40px, 6vw, 70px);
+}
+
+.row2 {
+	margin-left: 0;
+}
+
+/* Iconos sociales */
+.social {
+	gap: 14px;
+}
+
+/* Sección derecha img */
+.right img {
+	max-width: 100%;
+}
+
+/* Cintas */
+.cintas-container {
+	height: auto;
+}
+
+/********* RESPONSIVE DESIGN ***********/
+
+/* Barra de navegación */
+nav {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 15px 40px;
+}
+
+nav ul {
+	display: flex;
+	gap: 50px;
+}
+
+nav ul li a {
+	font-size: 16px;
+}
+/* Para pantallas medianas (tablets) */
+@media (max-width: 768px) {
+	nav {
+		flex-direction: column;
+		align-items: flex-start;
+		padding: 15px 20px;
+	}
+
+	nav ul {
+		flex-direction: column;
+		gap: 20px;
+	}
+
+	.hero {
+		flex-direction: column;
+		text-align: center;
+		padding: 20px;
+	}
+
+	.left {
+		max-width: 100%;
+	}
+
+	.line1 {
+		font-size: clamp(30px, 5vw, 50px);
+	}
+
+	.social {
+		flex-direction: row;
+		justify-content: center;
+		gap: 10px;
+	}
+
+	.right img {
+		max-width: 300px;
+	}
+
+	.cintas-container {
+		height: auto;
+	}
+}
+
+/* Para pantallas pequeñas (móviles) */
+@media (max-width: 480px) {
+	nav {
+		padding: 10px;
+	}
+
+	nav ul {
+		gap: 10px;
+	}
+
+	.hero {
+		padding: 10px;
+	}
+
+	.line1 {
+		font-size: clamp(20px, 4vw, 40px);
+	}
+
+	.social {
+		gap: 8px;
+	}
+
+	.right img {
+		max-width: 200px;
+	}
+
+	.subscribe-content {
+		flex-direction: column;
+		gap: 30px;
+	}
+
+	.subscribe-text h2 {
+		font-size: 24px;
+	}
+
+	.subscribe-text p {
+		font-size: 16px;
+	}
+
+	.subscribe form {
+		align-items: center;
+	}
+
+	.subscribe input,
+	.subscribe textarea,
+	.subscribe button {
+		max-width: 100%;
+	}
+}
+
+/* Para pantallas grandes (desktop) */
+@media (min-width: 1024px) {
+	.hero {
+		padding: 60px 80px;
+	}
+
+	.line1 {
+		font-size: clamp(60px, 7vw, 90px);
+	}
+
+	.subscribe-content {
+		gap: 80px;
+	}
+
+	.subscribe-text h2 {
+		font-size: 40px;
+	}
+
+	.subscribe-text p {
+		font-size: 18px;
+	}
+}
