@@ -188,11 +188,11 @@ nav ul li a.activo::before {
 /* Sección derecha img */
 .right img {
 	position: relative;
-	top: -20px;
+	top: -10px;
 	max-width: 420px;
 	height: auto;
 	display: block;
-	transform: rotate(-2.96deg); /* rotación en grados */
+	transform: rotate(-3deg); /* rotación en grados */
 }
 
 /* Cinta */
